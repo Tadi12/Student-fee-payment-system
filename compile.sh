@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e # Stop script on any error
+
 mkdir -p bin
 
 echo "Compiling common package..."
@@ -13,4 +15,7 @@ javac -cp "bin:lib/*" -d bin src/server/*.java
 echo "Compiling client package..."
 javac -cp "bin:lib/*" -d bin src/client/*.java
 
-echo "Compilation Successful!"
+echo ""
+echo "============================================"
+echo "   Compilation Successful!"
+echo "============================================"

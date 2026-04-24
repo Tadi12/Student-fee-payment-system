@@ -35,12 +35,13 @@ A distributed Student Fee Payment System using Java RMI, Swing (FlatLaf), MySQL,
 2. **MySQL Server** running on `localhost:3306`
 3. MySQL user `root` with empty password (or edit `DBConnection.java`)
 
-## Setup & Run
-
 ### 1. Compile
-```batch
-compile.bat
-```
+Run the compilation script for your OS:
+- **Windows**: `compile.bat`
+- **Linux/macOS**: `./compile.sh`
+
+> [!IMPORTANT]
+> The **`lib/`** folder must contain all required `.jar` files. If you are missing these, the compilation will fail with "package does not exist" errors.
 
 ### 2. Start Server
 ```batch
