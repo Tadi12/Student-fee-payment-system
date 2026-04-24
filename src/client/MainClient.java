@@ -18,6 +18,13 @@ public class MainClient {
     public static final String SERVICE_NAME = "FeeService";
 
     public static void main(String[] args) {
+        String host = SERVER_HOST;
+        if (args.length > 0) {
+            host = args[0];
+            System.out.println("[Client] Overriding server host: " + host);
+        }
+        final String finalHost = host;
+
         // Setup FlatLaf Dark theme
         try {
             UIManager.put("Button.arc", 10);
@@ -34,7 +41,8 @@ public class MainClient {
         SwingUtilities.invokeLater(() -> {
             try {
                 // Connect to RMI server
-                Registry registry = LocateRegistry.getRegistry(SERVER_HOST, SERVER_PORT);
+                System.out.println("[Client] Connecting to server at " + finalHost + "...");
+                Registry registry = LocateRegistry.getRegistry(finalHost, SERVER_PORT);
                 FeeService service = (FeeService) registry.lookup(SERVICE_NAME);
 
                 // Launch login form
@@ -42,8 +50,8 @@ public class MainClient {
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
-                    "Cannot connect to server at " + SERVER_HOST + ":" + SERVER_PORT +
-                    "\nPlease ensure the server is running.\n\nError: " + e.getMessage(),
+                    "Cannot connect to server at " + finalHost + ":" + SERVER_PORT +
+                    "\nPlease ensure the server is running and accessible.\n\nError: " + e.getMessage(),
                     "Connection Error", JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
             }

@@ -19,6 +19,19 @@ public class ServerMain {
         System.out.println();
 
         try {
+            // Set RMI hostname if not already set via -Djava.rmi.server.hostname
+            if (System.getProperty("java.rmi.server.hostname") == null) {
+                try {
+                    String localIp = java.net.InetAddress.getLocalHost().getHostAddress();
+                    System.setProperty("java.rmi.server.hostname", localIp);
+                    System.out.println("[Server] Auto-detected RMI hostname: " + localIp);
+                } catch (Exception e) {
+                    System.err.println("[Server] Warning: Could not auto-detect local IP. Client connections might fail.");
+                }
+            } else {
+                System.out.println("[Server] Using RMI hostname: " + System.getProperty("java.rmi.server.hostname"));
+            }
+
             // Initialize database
             System.out.println("[Server] Initializing database...");
             DBConnection.initializeDatabase();
