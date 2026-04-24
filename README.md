@@ -142,7 +142,9 @@ To run the system on two different machines (e.g., Server on Machine A, Client o
 1. Copy the project folder to Machine B.
 2. Open a terminal in the project folder.
 3. Make the scripts executable: `chmod +x *.sh`
-4. Run the remote client: `./run_client_remote.sh`
-5. When prompted, enter the **IP address** of Machine A.
+4. **Download libraries (if needed):** `./download_libs.sh`
+5. Compile the project: `./compile.sh`
+6. Run the remote client: `./run_client_remote.sh`
+7. When prompted, enter the **IP address** of Machine A.
 
 **Note:** Ensure both machines are on the same WiFi/Network and that port `1099` is not blocked by a firewall on the Server machine.
