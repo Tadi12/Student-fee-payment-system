@@ -137,9 +137,11 @@ To run the system on two different machines (e.g., Server on Machine A, Client o
 2. Look for the line: `[Server] Auto-detected RMI hostname: <IP_ADDRESS>`.
 3. Note down this IP address.
 
-### 2. On the Client Machine (Machine B)
-1. Copy the project folder (or clone the repo) to Machine B.
-2. Run `run_client_remote.bat`.
-3. When prompted, enter the **IP address** of Machine A.
+### 2. On the Client Machine (Machine B - Kubuntu/Linux)
+1. Copy the project folder to Machine B.
+2. Open a terminal in the project folder.
+3. Make the scripts executable: `chmod +x *.sh`
+4. Run the remote client: `./run_client_remote.sh`
+5. When prompted, enter the **IP address** of Machine A.
 
 **Note:** Ensure both machines are on the same WiFi/Network and that port `1099` is not blocked by a firewall on the Server machine.
